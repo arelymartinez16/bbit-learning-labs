@@ -15,8 +15,10 @@
 class mqProducerInterface:
     def __init__(self, exchange_name: str) -> None:
         # Save parameters to class variables
+        self.exchange_name = exchange_name
 
         # Call setupRMQConnection
+        self.setupRMQConnection()
 
         pass
 

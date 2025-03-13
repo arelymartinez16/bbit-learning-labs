@@ -1,7 +1,5 @@
 # import mqProducerInterface # type: ignore
 from producer_interface import mqProducerInterface
-import pika
-import os
 
 class mqProducer(mqProducerInterface):
     def __init__(self, routing_key: str, exchange_name: str):
@@ -18,7 +16,10 @@ class mqProducer(mqProducerInterface):
         self.m_channel = self.m_connection.channel()
 
         # Create the exchange if not already present
-        self.m_channel.exchange_declare(self.exchange_name)
+        # self.m_channel.exchange_declare(self.m_exchange_name)
+        self.m_channel.exchange_declare(
+            exchange=self.exchange_name, exchange_type="Topic"
+        )
 
     def publishOrder(self, message: str) -> None:
         # Basic Publish to Exchange

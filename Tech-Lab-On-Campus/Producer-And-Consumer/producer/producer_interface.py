@@ -33,8 +33,6 @@ class mqProducerInterface:
         # Create the exchange if not already present
         exchange = self.channel.exchange_declare(exchange="Exchange Name")
 
-        pass
-
     def publishOrder(self, message: str) -> None:
         # Basic Publish to Exchange
         self.channel.basic_publish(
@@ -48,5 +46,3 @@ class mqProducerInterface:
 
         # Close Connection
         self.connection.close()
-
-        pass
